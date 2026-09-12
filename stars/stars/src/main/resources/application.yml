@@ -1,3 +1,10 @@
+server:
+  tomcat:
+    accept-count: 2000
+    max-connections: 20000
+    max-threads: 500
+    min-spare-threads: 50
+
 spring:
   application:
     name: stars
@@ -36,8 +43,9 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      retries: 3
+      request.timeout.ms: 3000
       max.block.ms: 5000
-      request.timeout.ms: 5000
       delivery.timeout.ms: 15000
 
 springdoc:

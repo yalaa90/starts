@@ -19,6 +19,7 @@ class UserEventSaveSteppedSimulation extends Simulation {
     .baseUrl(baseUrl)
     .acceptHeader("application/json")
     .contentTypeHeader("application/json")
+    .maxConnectionsPerHost(System.getProperty("maxConnections", "1000").toInt)
 
   val feeder = Iterator.continually(Map(
     "email" -> s"${UUID.randomUUID()}@load.test",
